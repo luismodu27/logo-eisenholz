@@ -8,17 +8,18 @@ con sede en Hermosillo, Sonora.
 
 Este sistema **respeta la identidad real** de Eisenholz: su logotipo tipográfico
 techno, monolínea y monocromático. El logotipo maestro está vectorizado a partir de
-su logo oficial; el resto del sistema se construye a partir de sus propias formas.
+su logo oficial, y se le suma un **símbolo original (monograma EH)** construido en el
+mismo lenguaje.
 
 ## La identidad
 
-El nombre une dos palabras alemanas: **Eisen** (hierro) y **Holz** (madera). El
-logotipo es puramente tipográfico, con dos rasgos que lo hacen inconfundible:
+El nombre une dos palabras alemanas: **Eisen** (hierro) y **Holz** (madera).
 
-- **La "E"** — tres barras horizontales redondeadas, sin asta vertical. Es el rasgo
-  más característico de la marca y la base del **isotipo**.
-- **La "Z"** — dibujada en espejo, hace eco de la "E" y cierra la palabra con una
-  simetría deliberada entre inicio y final.
+- **Símbolo EH** — el isotipo funde la **E** y la **H**, iniciales de *Eisen* y
+  *Holz*. Comparten el asta izquierda y la barra central: un monograma geométrico
+  que resume el nombre. Sirve para favicon, app y redes.
+- **Simetría E ↔ Z** — en el logotipo, la "E" (inicio) y la "Z" espejada (final)
+  hacen eco entre sí: una simetría deliberada que encierra la palabra *EisenholZ*.
 - **Estilo** — techno, geométrico, de trazo constante (monolínea) y terminaciones
   totalmente redondeadas.
 
@@ -42,7 +43,7 @@ negro o el blanco sólido, nunca un tono intermedio.
 | `eisenholz-horizontal.svg` / `-white.svg` | Lockup horizontal (badge + logotipo) |
 | `eisenholz-stacked.svg` / `-white.svg` | Lockup vertical |
 | `eisenholz-badge.svg` / `-white.svg` | Isotipo en contenedor (app icon) |
-| `eisenholz-isotipo.svg` / `-white.svg` | Isotipo suelto — la "E" de tres barras |
+| `eisenholz-isotipo.svg` / `-white.svg` | Isotipo suelto — monograma EH |
 | `favicon.svg` | Favicon vectorial |
 
 Todo va **convertido a trazos**: los SVG no dependen de ninguna fuente instalada.
@@ -84,7 +85,6 @@ node tools/export-png.js eisenholz-badge:512:t   # PNG (nombre:ancho:fondo)
 ```
 
 - `tools/build-identity.js` — reconstruye el sistema desde el logotipo vectorizado y
-  las proporciones exactas de la "E" (grosor 76 · alto 427 · largo 451, medidas del
-  logo oficial).
+  el monograma EH (geometría definida en el propio script).
 - `tools/build-guide.js` — arma el manual de identidad (gráficos embebidos).
 - `tools/export-png.js` / `render*.js` — rasterizan SVG/HTML con Chromium (Playwright).

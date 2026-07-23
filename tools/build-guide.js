@@ -121,14 +121,14 @@ const BODY = `
   <section>
     <div class="head">
       <div class="eyebrow">${tick} Identidad</div>
-      <h2>Un logotipo de trazo constante</h2>
-      <p>La marca es un <b>logotipo tipográfico</b> con carácter techno: geométrico, monolínea y de terminaciones totalmente redondeadas. Dos rasgos lo hacen inconfundible.</p>
+      <h2>Logotipo techno + monograma EH</h2>
+      <p>La marca es un <b>logotipo tipográfico</b> de carácter techno —geométrico, monolínea y de terminaciones redondeadas— acompañado de un <b>símbolo EH</b> construido en el mismo lenguaje.</p>
     </div>
     <div class="concept">
-      <div class="art">${ISO}</div>
+      <div class="art">${BADGE}</div>
       <div class="legend">
-        <div class="it"><div class="n">La "E"</div><p>Tres barras horizontales redondeadas, sin asta vertical. Es el rasgo más característico de la marca y la base del isotipo.</p></div>
-        <div class="it"><div class="n">La "Z"</div><p>Dibujada en espejo, hace eco de la "E" y cierra la palabra con una simetría deliberada entre inicio y final.</p></div>
+        <div class="it"><div class="n">EH</div><p>El símbolo funde <b>E</b> y <b>H</b> — las iniciales de <i>Eisen</i> (hierro) y <i>Holz</i> (madera). Comparten el asta y la barra central: un monograma geométrico que resume el nombre.</p></div>
+        <div class="it"><div class="n">E ↔ Z</div><p>En el logotipo, la "E" (inicio) y la "Z" espejada (final) hacen eco entre sí: una simetría deliberada que encierra la palabra <i>EisenholZ</i> completa.</p></div>
         <div class="it"><div class="n">Color</div><p>Monocromático: negro puro sobre claro, blanco sobre oscuro. Sin degradados ni colores adicionales.</p></div>
       </div>
     </div>
@@ -138,7 +138,7 @@ const BODY = `
     <div class="head">
       <div class="eyebrow">${tick} El sistema</div>
       <h2>Logotipo, isotipo y lockups</h2>
-      <p>El logotipo es autosuficiente. El isotipo —derivado de la "E" de tres barras— sirve para favicon, app y redes, donde no cabe la palabra completa.</p>
+      <p>El logotipo es autosuficiente. El isotipo —el monograma EH— sirve para favicon, app y redes, donde no cabe la palabra completa.</p>
     </div>
     <div class="grid g2" style="margin-bottom:20px">
       <div class="tile"><div class="st w">${HOR}</div><div class="cap"><b>Horizontal</b><span>badge + logotipo</span></div></div>
