@@ -22,6 +22,9 @@ El nombre une dos palabras alemanas: **Eisen** (hierro) y **Holz** (madera).
   hacen eco entre sí: una simetría deliberada que encierra la palabra *EisenholZ*.
 - **Estilo** — techno, geométrico, de trazo constante (monolínea) y terminaciones
   totalmente redondeadas.
+- **Descriptor** — bajo el logotipo, las 3 áreas: *Semiconductores · Electromovilidad ·
+  MRX*, compuestas en **Chakra Petch** (techno de esquinas achaflanadas), la tipografía
+  de apoyo. Reproducido del lockup oficial en `reference/`.
 
 ## Color — monocromático
 
@@ -40,6 +43,7 @@ negro o el blanco sólido, nunca un tono intermedio.
 | Archivo | Descripción |
 |--------|-------------|
 | `eisenholz-wordmark.svg` / `-white.svg` | Logotipo (su logo real, vectorizado) |
+| `eisenholz-lockup-descriptor.svg` / `-white.svg` | **Lockup oficial** — logotipo + descriptor (Semiconductores · Electromovilidad · MRX) |
 | `eisenholz-horizontal.svg` / `-white.svg` | Lockup horizontal (badge + logotipo) |
 | `eisenholz-stacked.svg` / `-white.svg` | Lockup vertical |
 | `eisenholz-badge.svg` / `-white.svg` | Isotipo en contenedor (app icon) |

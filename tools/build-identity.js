@@ -1,6 +1,9 @@
 // Builds the Eisenholz identity system.
 // Wordmark = their real logo (vectorized). Symbol = EH monogram (Eisen + Holz).
+// Descriptor = "SEMICONDUCTORES - ELECTROMOVILIDAD - MRX" in Chakra Petch (matches
+// the official lockup); converted to outlines so deliverables need no font.
 const fs = require('fs');
+const opentype = require(process.env.OPENTYPE_PATH || 'opentype.js'); // npm i opentype.js
 
 const src = fs.readFileSync('assets/_wordmark-src.svg', 'utf8');
 const WM_D = src.match(/<path[^>]*\bd="([^"]+)"/)[1];
@@ -9,6 +12,31 @@ const [, , WM_W, WM_H] = WM_VB.split(' ').map(Number);
 
 const BLACK = '#000000';
 const WHITE = '#FFFFFF';
+
+// text -> outline path (glyphs built at x=0 and offset manually to avoid opentype's
+// large-x NaN bug). Returns { d, width, capHeight } at the given font size.
+function textPath(fontFile, text, size, trackEm) {
+  const buf = fs.readFileSync('assets/fonts/' + fontFile);
+  const font = opentype.parse(buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength));
+  const tr = trackEm * size; let x = 0; const cmds = [];
+  const r = n => Math.round(n * 1000) / 1000;
+  for (const g of font.stringToGlyphs(text)) {
+    for (const c of g.getPath(0, 0, size).commands) {
+      const o = { type: c.type };
+      if ('x' in c) { o.x = r(c.x + x); o.y = r(c.y); }
+      if ('x1' in c) { o.x1 = r(c.x1 + x); o.y1 = r(c.y1); }
+      if ('x2' in c) { o.x2 = r(c.x2 + x); o.y2 = r(c.y2); }
+      cmds.push(o);
+    }
+    x += (g.advanceWidth / font.unitsPerEm) * size + tr;
+  }
+  const d = cmds.map(c => c.type === 'M' ? `M${c.x} ${c.y}` : c.type === 'L' ? `L${c.x} ${c.y}` :
+    c.type === 'C' ? `C${c.x1} ${c.y1} ${c.x2} ${c.y2} ${c.x} ${c.y}` :
+    c.type === 'Q' ? `Q${c.x1} ${c.y1} ${c.x} ${c.y}` : 'Z').join('');
+  const capH = (font.tables.os2?.sCapHeight || font.ascender * 0.7) * (size / font.unitsPerEm);
+  return { d, width: +(x - tr).toFixed(2), capHeight: +capH.toFixed(2) };
+}
+const DESCRIPTOR = 'SEMICONDUCTORES - ELECTROMOVILIDAD - MRX';
 
 const svg = (vb, body) =>
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}">\n${body}\n</svg>\n`;
@@ -73,4 +101,22 @@ function stacked(fill, bg, eColor) {
 fs.writeFileSync('assets/eisenholz-stacked.svg',       stacked(BLACK, BLACK, WHITE));
 fs.writeFileSync('assets/eisenholz-stacked-white.svg', stacked(WHITE, WHITE, BLACK));
 
-console.log('Identity system (EH monogram) written.');
+// ---- OFFICIAL descriptor lockup: wordmark + "SEMICONDUCTORES - ELECTROMOVILIDAD - MRX" ----
+function descriptorLockup(fill) {
+  const P = 10;
+  const desc = textPath('ChakraPetch-500.ttf', DESCRIPTOR, 100, 0.14);
+  const targetW = WM_W * 0.995;                 // descriptor spans ~full wordmark width
+  const dScale = targetW / desc.width;
+  const dCap = desc.capHeight * dScale;
+  const gap = WM_H * 0.42;                       // space under the wordmark
+  const dX = (WM_W - targetW) / 2;              // center
+  const dY = WM_H + gap + dCap;                  // baseline
+  const totalH = WM_H + gap + dCap;
+  return svg(`${-P} ${-P} ${(WM_W + 2 * P).toFixed(1)} ${(totalH + 2 * P).toFixed(1)}`,
+    `  <path d="${WM_D}" fill="${fill}"/>\n` +
+    `  <g transform="translate(${dX.toFixed(2)}, ${dY.toFixed(2)}) scale(${dScale.toFixed(5)})"><path d="${desc.d}" fill="${fill}"/></g>`);
+}
+fs.writeFileSync('assets/eisenholz-lockup-descriptor.svg',       descriptorLockup(BLACK));
+fs.writeFileSync('assets/eisenholz-lockup-descriptor-white.svg', descriptorLockup(WHITE));
+
+console.log('Identity system (EH monogram + official descriptor) written.');

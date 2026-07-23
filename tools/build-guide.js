@@ -8,6 +8,8 @@ const BADGE_W = R('eisenholz-badge-white.svg');
 const HOR = R('eisenholz-horizontal.svg');
 const HOR_W = R('eisenholz-horizontal-white.svg');
 const STK = R('eisenholz-stacked.svg');
+const DESC = R('eisenholz-lockup-descriptor.svg');
+const DESC_W = R('eisenholz-lockup-descriptor-white.svg');
 
 const tick = `<svg class="tick" viewBox="0 0 100 100" aria-hidden="true"><rect x="8" y="20" width="84" height="16" rx="8"/><rect x="8" y="42" width="84" height="16" rx="8"/><rect x="8" y="64" width="84" height="16" rx="8"/></svg>`;
 
@@ -111,7 +113,7 @@ const BODY = `
     <p class="sub">Eisenholz — <i>Eisen</i> (hierro) + <i>Holz</i> (madera). Empresa mexicana de tecnología industrial: semiconductores, e-mobility, realidad mixta e inteligencia artificial.</p>
     <div class="metas">
       <span><b>Origen</b> &nbsp;Hermosillo, Sonora</span>
-      <span><b>Lema</b> &nbsp;Industria · Inteligencia · Futuro</span>
+      <span><b>Áreas</b> &nbsp;Semiconductores · Electromovilidad · MRX</span>
       <span><b>Estilo</b> &nbsp;Techno monolínea · Monocromático</span>
     </div>
   </div>
@@ -138,8 +140,9 @@ const BODY = `
     <div class="head">
       <div class="eyebrow">${tick} El sistema</div>
       <h2>Logotipo, isotipo y lockups</h2>
-      <p>El logotipo es autosuficiente. El isotipo —el monograma EH— sirve para favicon, app y redes, donde no cabe la palabra completa.</p>
+      <p>El logotipo es autosuficiente. Bajo él, el descriptor <b>Semiconductores · Electromovilidad · MRX</b> se compone en <b>Chakra Petch</b> (techno de esquinas achaflanadas), la tipografía de apoyo. El isotipo —el monograma EH— sirve para favicon, app y redes.</p>
     </div>
+    <div class="tile" style="margin-bottom:20px"><div class="st w" style="height:210px">${DESC}</div><div class="cap"><b>Lockup oficial</b><span>logotipo + descriptor</span></div></div>
     <div class="grid g2" style="margin-bottom:20px">
       <div class="tile"><div class="st w">${HOR}</div><div class="cap"><b>Horizontal</b><span>badge + logotipo</span></div></div>
       <div class="tile"><div class="st k">${HOR_W}</div><div class="cap"><b>Horizontal</b><span>reversa</span></div></div>
