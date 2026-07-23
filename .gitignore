@@ -1,0 +1,4 @@
+# Development proofs / scratch renders
+proofs/
+node_modules/
+*.log
